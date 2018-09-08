@@ -98,26 +98,31 @@ def getUserInput() :
 # where xlow = 0.5, xupper = 1.0, tolerance = 0.2
 # formula = '((-25) + (82*x) - (90*(x**2)) + (44*(x**3) - (8*(x**4)) + (0.7*(x**5))))'
 
-def main() :
+def start() :
 	global formula, xlow, xupper, tolerance, maxIterations
+	print("Welcome to Bisection Program!")
+	getUserInput()
+	print(bisection(xlow, xupper, tolerance, maxIterations))
 
-	if(len(sys.argv) == 1) :
-		print('Welcome to Bisection Program:\nThis program can work with arguments or it will prompt you to type each value one by one')
-		userOption = input("1) Continue and type each value\n2) Exit program and try with arguments\n")
-		if(int(userOption) == 1) :
-		  getUserInput()
-		  print(bisection(xlow, xupper, tolerance, maxIterations))
-		else :
-		  print("\nMake sure to pass 5 arguments. \n1) Formula with unknown variable 'x' (required) \n2) xlow\n3) xupper\n4) tolerance\n5) maximum number of iterations\n") 
-		  exit()
-	elif (len(sys.argv) == 6) :
-		formula = sys.argv[1]
-		xlow = float(sys.argv[2])
-		xupper = float(sys.argv[3])
-		tolerance = float(sys.argv[4])
-		maxIterations = int(sys.argv[5])
-		print(bisection(xlow, xupper, tolerance, maxIterations))
-	else :
-		print("\nError: Missing argument. Make sure to pass 5 arguments. \n1) Formula with unknown variable 'x' (required) \n2) xlow\n3) xupper\n4) tolerance\n5) maximum number of iterations\n")
+# This works when you want to work with arguments or user input
+# def mainBisection() :
+# 	global formula, xlow, xupper, tolerance, maxIterations
 
-main()
+# 	if(len(sys.argv) == 1) :
+# 		print('Welcome to Bisection Program:\nThis program can work with arguments or it will prompt you to type each value one by one')
+# 		userOption = input("1) Continue and type each value\n2) Exit program and try with arguments\n")
+# 		if(int(userOption) == 1) :
+# 		  getUserInput()
+# 		  print(bisection(xlow, xupper, tolerance, maxIterations))
+# 		else :
+# 		  print("\nMake sure to pass 5 arguments. \n1) Formula with unknown variable 'x' (required) \n2) xlow\n3) xupper\n4) tolerance\n5) maximum number of iterations\n") 
+# 		  exit()
+# 	elif (len(sys.argv) == 6) :
+# 		formula = sys.argv[1]
+# 		xlow = float(sys.argv[2])
+# 		xupper = float(sys.argv[3])
+# 		tolerance = float(sys.argv[4])
+# 		maxIterations = int(sys.argv[5])
+# 		print(bisection(xlow, xupper, tolerance, maxIterations))
+# 	else :
+# 		print("\nError: Missing argument. Make sure to pass 5 arguments. \n1) Formula with unknown variable 'x' (required) \n2) xlow\n3) xupper\n4) tolerance\n5) maximum number of iterations\n")

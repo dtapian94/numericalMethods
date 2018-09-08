@@ -98,6 +98,12 @@ def getUserInput() :
 # formula = '((-25) + (82*x) - (90*(x**2)) + (44*(x**3) - (8*(x**4)) + (0.7*(x**5))))'
 
 
+def start() :
+    global formula, xlow, xupper, tolerance, maxIterations
+    print("Welcome to False Position Program!")
+    getUserInput()
+    print(false_position(xlow, xupper, tolerance, maxIterations))
+
 def main() :
     global formula, xlow, xupper, tolerance, maxIterations
 
@@ -119,5 +125,3 @@ def main() :
         print(false_position(xlow, xupper, tolerance, maxIterations))
     else :
         print("\nError: Missing argument. Make sure to pass 5 arguments. \n1) Formula with unknown variable 'x' (required) \n2) xlow\n3) xupper\n4) tolerance\n5) maximum number of iterations\n")
-
-main()
