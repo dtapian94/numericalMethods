@@ -1,15 +1,17 @@
 # numericalMethods
 Numerical methods course porgrams
 
-Project:
+Final Project Dependancies: Anaconda for python 3
 
 Download Anaconda
+[Anaconda](https://www.anaconda.com/download/)
 
 In the Final Project directory run:
-```python
+```
 conda env create -f num-meth-proj.yml
 ```
 
 Then run: 
-
+```
 activate num-meth-proj
+```
