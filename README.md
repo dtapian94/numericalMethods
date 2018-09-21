@@ -18,3 +18,8 @@ activate num-meth-project
 You will see a (num-methods-project) at the beginning of cmd or terminal; this means the environment activated correctly
 
 
+Once activated run the python program
+```
+python finalProject.py
+```
+
