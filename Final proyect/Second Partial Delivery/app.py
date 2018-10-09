@@ -4,6 +4,7 @@ from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen, SwapTransition
 from kivy.uix.dropdown import DropDown
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.lang import Builder
@@ -22,8 +23,8 @@ class BracketMethods(Screen):
         super(BracketMethods, self).__init__(**kwargs)
 
         basebox = BoxLayout(orientation='vertical')
-        inputs = BoxLayout(orientation='horizontal')
-        options = BoxLayout(orientation='horizontal')
+        inputs = BoxLayout(orientation='horizontal',size_hint=(1,.3))
+        options = BoxLayout(orientation='horizontal',size_hint=(1,.3))
         results = BoxLayout(orientation='vertical')
 
         self.formulaTxtInput = TextInput(hint_text='formula with unknown variable x')
@@ -32,9 +33,9 @@ class BracketMethods(Screen):
         self.tolTxtInput = TextInput(hint_text='tolerance')
         self.iterationsTxtInput = TextInput(hint_text='max iterations')
 
-        runBtn = Button(text='run')
+        runBtn = Button(text='RUN')
         runBtn.bind(on_release=self.run)
-        backBtn = Button(text='Back to Menu')
+        backBtn = Button(text='BACK')
         backBtn.bind(on_release=self.backToMenu)
         self.bisectionResultsLabel = Label(text='')
         self.falsePositionResultsLabel = Label(text='')
@@ -201,27 +202,104 @@ class OpenMethods(Screen):
             i = i + 1
         return "Result: " + str(x0) + " Iteration: " + str(i) + " aproximate percent relative error: " + str(error)
 
-    def altSecant(x, diff, tol, maxAttempts):
+    def altSecant(self, x, diff, tol, maxAttempts):
         iteration = 1
         rError = 100 # Start with 100% error
-        while rError >= tolerance:
+        while rError >= tol:
             if iteration == maxAttempts :
                 break
-            xI = x - (diff*x*f(x))/(f(x+(diff*x))-f(x))
+            xI = x - (diff*x*self.f(x))/(self.f(x+(diff*x))-self.f(x))
             rError = abs((xI-x)/xI) * 100
             x = xI
             iteration += 1
         return "Result: " + str(xI) + " Iteration: " + str(iteration) + "aproximate percent relative error: " + str(rError)
 
 
-class GaussElimination(Screen):
-    pass
+class SystemOfEquations(Screen):
+    screenManager = ObjectProperty()
 
-class LUDecomposition(Screen):
-    pass
+    def __init__(self, **kwargs):
+        super(SystemOfEquations, self).__init__(**kwargs)
 
-class GaussSeidel(Screen):
-    pass
+        self.basebox = BoxLayout(orientation='vertical')
+        self.sizeInputs = BoxLayout(orientation='horizontal')
+        self.options = BoxLayout(orientation='horizontal')
+        self.matrixInputs = BoxLayout(orientation='horizontal')
+
+        matrixSizeLabel = Label(text='Matrix Size: (include equation results as a column)')
+        self.mTxtInput = TextInput(hint_text='m')
+        self.nTxtInput = TextInput(hint_text='n')
+        okBtn = Button(text='OK')
+        okBtn.bind(on_release=self.onClickOK)
+
+        backBtn = Button(text='Back to Menu')
+        backBtn.bind(on_release=self.backToMenu)
+
+        self.sizeInputs.add_widget(matrixSizeLabel)
+        self.sizeInputs.add_widget(self.mTxtInput)
+        self.sizeInputs.add_widget(self.nTxtInput)
+        self.sizeInputs.add_widget(okBtn)
+
+        self.options.add_widget(backBtn)
+
+        self.basebox.add_widget(self.sizeInputs)
+        self.basebox.add_widget(self.options)
+        self.basebox.add_widget(self.matrixInputs)
+
+        self.add_widget(self.basebox)
+
+
+    def onClickOK(self, obj):
+        # get size of matrix
+        self.m = int(self.mTxtInput.text)
+        self.n = int(self.nTxtInput.text)
+
+        # clear child widgets that may repeat
+        self.options.clear_widgets()
+        self.matrixInputs.clear_widgets()
+        # add buttons to options
+        backBtn = Button(text='Back to Menu')
+        backBtn.bind(on_release=self.backToMenu)
+        gaussElimBtn = Button(text='Gauss Elimination\nwith partial pivoting')
+        gaussElimBtn.bind(on_release=self.gauss)
+        LUDecompositionBtn = Button(text='LU Decomposition')
+        LUDecompositionBtn.bind(on_release=self.LUDecomposition)
+        gaussSeidelBtn = Button(text='Gauss Seidel')
+        gaussSeidelBtn.bind(on_release=self.gaussSeidel)
+
+        self.options.add_widget(backBtn)
+        self.options.add_widget(gaussElimBtn)
+        self.options.add_widget(LUDecompositionBtn)
+        self.options.add_widget(gaussSeidelBtn)
+
+        # add square matrix inputs
+        squareMatrixInputs = BoxLayout(orientation='vertical')
+        squareMatrixLabel = Label(text='Square Matrix')
+        matrixGrid = GridLayout(rows=self.m,cols=self.n-1)
+        for i in range(self.m):
+            for j in range(self.n-1):
+                matrixGrid.add_widget(TextInput(hint_text="("+str(i)+","+str(j)+")"))
+        squareMatrixInputs.add_widget(squareMatrixLabel)
+        squareMatrixInputs.add_widget(matrixGrid)
+
+        # add variable name inputs
+        varInputs = BoxLayout(orientation='vertical')
+        # add result inputs
+
+        # add widgets
+        self.matrixInputs.add_widget(squareMatrixInputs)
+
+    def gauss(self):
+        print('gauss')
+
+    def LUDecomposition(self):
+        print('lu')
+
+    def gaussSeidel(self):
+        print('gaussSeidel')
+
+    def backToMenu(self, obj):
+        self.screenManager.current = 'menu'
 
 class NumericalMethodsApp(App):
     def build(self):
@@ -230,6 +308,8 @@ class NumericalMethodsApp(App):
         root.add_widget(MainMenu())
         root.add_widget(BracketMethods(screenManager=root,name='bracket_methods'))
         root.add_widget(OpenMethods(screenManager=root,name='open_methods'))
+        root.add_widget(SystemOfEquations(screenManager=root,name='system_equations'))
+
         return root
 
 
