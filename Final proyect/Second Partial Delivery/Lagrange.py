@@ -9,8 +9,8 @@ print("Lagrange Interpolation Method")
 # Input points and x to be evaluated
 n = int(input('Enter number of points to be inserted'))
 
-Xs = []
-Ys = []
+Xs = [] # x values
+Ys = [] # y values
 
 for i in range(0, n):
     Xs.append(float(input('Input X' + str(i+1))))
