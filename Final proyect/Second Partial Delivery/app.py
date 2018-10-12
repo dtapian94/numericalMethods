@@ -225,6 +225,7 @@ class SystemOfEquations(Screen):
         self.sizeInputs = BoxLayout(orientation='horizontal')
         self.options = BoxLayout(orientation='horizontal')
         self.matrixInputs = BoxLayout(orientation='horizontal')
+        self.variableInputs = BoxLayout(orientation='horizontal')
 
         matrixSizeLabel = Label(text='Matrix Size: (include equation results as a column)')
         self.mTxtInput = TextInput(hint_text='m')
