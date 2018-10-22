@@ -1,0 +1,23 @@
+Hello...
+
+Here is what you should deliver by this coming Sunday October 21st before midnight:
+
+1) Solution of systems of linear equations
+
+1a) Gaussian Eliminatio. You need to ask for the number of equation, the user gives the coefficient matrix as well as the right hand side. The answer is the final matrix and the results for tha unknowns.
+
+1b) LU Decomposition. You need to ask for the number of equation, the user gives the coefficient matrix as well as the right hand side. The answer is the matrix L, matrix U and the results. After this you need top ask if a new right hand side should be solved, and if the answer is yes, the user gives the new RHS and you use the L and U matrices that you already have and just do the backward substitution.
+
+1c) Gauss Seidel.-  You need to ask for the number of equation, the user gives the coefficient matirix as well as the right hand side, the tolerance and the maximum number of iterations. You need to tell the user to capture the matrix such that the diagonal doesn't have "0's" and is heavy. The answer is theresults, the umber of iterations that it took to get there and the sum of the total erros (absolute value.
+
+2.- Interpolation.- for all the cases you need to ask the user the number of points and then capture the values (x,y).
+
+2a) Lagrange.- ask for the number where the value needs to be calculated. Ask for the degree of the polynomial to be used. Based in this decide which points use, calculate Lagrange Factor's and evaluate. The results are the values of the Lagrange Factors as well as the "y" value for the "x" value given by the user.
+
+2b) Divided Differences. First you calculate and show the WHOLE DIVIDED DIFERENCES values, and then you ask the user where the value needs to be calculated and the degree of the polynomial to do it. Based on this you decide which differences you . The final result is just the "y" value for the "x" given by the user.
+
+2c) Power Series.- you create and solve the system of equations. The answer is the polynomial, and then you ask where you want to calculate the value and evaluate.
+
+In ALL three cases, there has to be the option of evaluating new points, taking advantage of what you already have.
+
+EXITO!!!

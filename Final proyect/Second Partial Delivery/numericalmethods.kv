@@ -1,6 +1,7 @@
 <MainMenu>:
     name: 'menu'
     BoxLayout:
+        orientation: 'vertical'
         Button:
             text: 'Bracket Methods'
             on_release: root.manager.current = 'bracket_methods'
@@ -10,6 +11,9 @@
         Button:
             text: 'Solve Systems of equations:\nGauss Elimination\nLU Decomposition\nGauss Seidel'
             on_release: root.manager.current = 'system_equations'
+        Button:
+            text: 'Interpolation'
+            on_release: root.manager.current = 'interpolation'
 
 
 
