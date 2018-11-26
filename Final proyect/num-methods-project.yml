@@ -1,31 +1,33 @@
-name: num-methods-project
-channels:
-  - conda-forge
-  - defaults
-dependencies:
-  - certifi=2018.8.24=py36_0
-  - docutils=0.14=py36_1
-  - freetype=2.8.1=ha63716d_1
-  - glew=2.0.0=h2fa13f4_0
-  - jpeg=9c=hfa6e2cd_0
-  - kivy=1.10.1=py36h47ee06f_1
-  - libpng=1.6.35=h7602738_0
-  - libtiff=4.0.9=hf1753bf_1
-  - olefile=0.45.1=py_1
-  - pillow=5.0.0=py36_0
-  - pip=18.0=py36_1
-  - pygments=2.2.0=py_1
-  - python=3.6.6=he025d50_0
-  - sdl2=2.0.8=1
-  - sdl2_image=2.0.2=h38009a3_1
-  - sdl2_mixer=2.0.1=h6538335_1
-  - sdl2_ttf=2.0.14=h8909db8_1
-  - setuptools=40.2.0=py36_0
-  - smpeg2=2.0.0=h6538335_1
-  - wheel=0.31.1=py36_1
-  - wincertstore=0.2=py36_2
-  - zlib=1.2.11=h2fa13f4_3
-  - vc=14.1=h21ff451_3
-  - vs2015_runtime=15.5.2=3
-prefix: C:\Users\Eugenio\Anaconda3\envs\num-methods-project
+usage: conda-env [-h] {attach,create,export,list,remove,upload,update} ...
 
+positional arguments:
+  {attach,create,export,list,remove,upload,update}
+    attach              WARNING: This command is deprecated in conda 4.4 and
+                        scheduled for removal in conda 4.5. Embeds information
+                        describing your conda environment into the notebook
+                        metadata
+    create              Create an environment based on an environment file
+    export              Export a given environment
+    list                List the Conda environments
+    remove              Remove an environment
+    upload              WARNING: This command is deprecated in conda 4.4 and
+                        scheduled for removal in conda 4.5. Upload an
+                        environment to anaconda.org
+    update              Update the current environment based on environment
+                        file
+
+optional arguments:
+  -h, --help            Show this help message and exit.
+
+conda commands available from other packages:
+  build
+  convert
+  develop
+  env
+  index
+  inspect
+  metapackage
+  render
+  server
+  skeleton
+  verify

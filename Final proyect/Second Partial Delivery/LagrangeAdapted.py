@@ -45,18 +45,18 @@ def LagrangeMethod(Xs, Ys, n, x, deg):
     return returnVal
 
 
-# Input points and x to be evaluated
-n = int(input('Enter number of points to be inserted'))
+# # Input points and x to be evaluated
+# n = int(input('Enter number of points to be inserted'))
 
-Xs = []  # x values
-Ys = []  # y values
+# Xs = []  # x values
+# Ys = []  # y values
 
-for i in range(0, n):
-    Xs.append(float(input('Input X' + str(i+1))))
-    Ys.append(float(input('Input Y' + str(i+1))))
+# for i in range(0, n):
+#     Xs.append(float(input('Input X' + str(i+1))))
+#     Ys.append(float(input('Input Y' + str(i+1))))
 
-x = float(input('Enter x to be evaluated'))
+# x = float(input('Enter x to be evaluated'))
 
-res = LagrangeMethod(Xs, Ys, n, x, 3)
+# res = LagrangeMethod(Xs, Ys, n, x, 3)
 
-print(res)
+# print(res)
